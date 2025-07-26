@@ -21,6 +21,10 @@
     %link{:href => "https://fonts.googleapis.com/css2?family=Poppins&display=swap", :rel => "stylesheet"}/
 
   %body
+    %header
+      - if user_signed_in?
+        %p= current_user.account.present? ? "#{current_user.account}さん" : "ゲストさん"
+        = link_to 'LOGOUT', destroy_user_session_path, data: { turbo_method: 'delete' }
     - if flash.present?
       .flash
         - flash.each do |key, value|
