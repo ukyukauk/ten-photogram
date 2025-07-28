@@ -14,7 +14,7 @@
 #
 # Indexes
 #
-#  index_users_on_account               (account)
+#  index_users_on_account               (account) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
@@ -24,7 +24,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :account, presence: true, uniqueness: { case_sensitive: false }  # 大小を区別しない
+
   has_one_attached :avatar
 
   has_many :posts, dependent: :destroy
+
+  def avatar_image
+    if avatar&.attached?
+      avatar
+    else
+      'Ellipse.png'
+    end
+  end
 end

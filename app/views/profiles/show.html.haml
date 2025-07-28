@@ -1,0 +1,28 @@
+.container.profilePage
+  .profilePage_header
+    .profilePage_backBtn
+      = link_to :back do
+        = image_tag 'Tabs.png', class: 'header_back'
+    .profilePage_accountName
+      = @user.account
+    .profilePage_actionBtn
+      = link_to 'Follow', '#'
+  .profilePage_user
+    .profilePage_user_img
+      = image_tag @user.avatar_image, class: 'profile-avatar'
+    .profilePage_user_data
+      .profilePage_user_content
+        .profilePage_user_data_count
+          44
+        .profilePage_user_data_label
+          Posts
+      .profilePage_user_content
+        .profilePage_user_data_count
+          110
+        .profilePage_user_data_label
+          Followers
+      .profilePage_user_content
+        .profilePage_user_data_count
+          44
+        .profilePage_user_data_label
+          Following
