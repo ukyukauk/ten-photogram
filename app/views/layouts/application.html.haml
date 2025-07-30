@@ -21,18 +21,23 @@
     %link{:crossorigin => "", :href => "https://fonts.gstatic.com", :rel => "preconnect"}
     %link{:href => "https://fonts.googleapis.com/css2?family=Poppins&display=swap", :rel => "stylesheet"}/
 
-  %body
-    - if controller_name == 'users'&& action_name == 'index'
-      %header.header
-        .header_container
-          .header_button
-            - if user_signed_in?
-              = link_to 'LOGOUT', destroy_user_session_path, data: { turbo_method: 'delete' }
-            - else
-              = link_to 'LOGIN', new_user_session_path
+    / font awesome
+    %link{:href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
 
-    - if flash.present?
-      .flash
-        - flash.each do |key, value|
-          %div{:class => key}= value
-    = yield
+  %body
+    -# - if controller_name == 'users'&& action_name == 'index'
+    -#   %header.header
+    -#     .header_container
+    -#       .header_button
+    -#         - if user_signed_in?
+    -#           = link_to 'LOGOUT', destroy_user_session_path, data: { turbo_method: 'delete' }
+    -#         - else
+    -#           = link_to 'LOGIN', new_user_session_path
+  - unless devise_controller?
+    %header.header
+
+  - if flash.present?
+    .flash
+      - flash.each do |key, value|
+        %div{:class => key}= value
+  = yield
