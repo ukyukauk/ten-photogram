@@ -18,5 +18,8 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index, :new, :create]
 
-  resources :profiles, only: [:show, :edit, :update]
+  resources :profiles, only: [:show] do
+    patch :avatar_upload, on: :member  # プロフィール画像変更（自分だけ使う）
+  end
+
 end
