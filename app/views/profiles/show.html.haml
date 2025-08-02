@@ -1,11 +1,11 @@
 .container.profilePage
-  .profilePage_header
-    .profilePage_backBtn
+  .header_row
+    .header_left
       = link_to :back do
-        = image_tag 'Tabs.png', class: 'header_back'
-    .profilePage_accountName
+        = image_tag 'back.png', class: 'header_back'
+    .header_center
       = @user.account
-    .profilePage_actionBtn
+    .header_right
       = link_to 'Follow', '#'
 
   .profilePage_user
@@ -15,7 +15,7 @@
         - if @user.avatar.attached?
           = image_tag @user.avatar, id: "avatar-image", class: "profile-avatar"
         - else
-          = image_tag "Ellipse.png", id: "avatar-image", class: "profile-avatar"
+          = image_tag "default-avatar.png", id: "avatar-image", class: "profile-avatar"
 
     .profilePage_user_data
       .profilePage_user_content

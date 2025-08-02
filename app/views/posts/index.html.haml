@@ -1,14 +1,63 @@
 .container.postPage
-  .postPage_header
-    .postPage_cameraIcon
-      %i.fa-regular.fa-camera
-
-    .postPage_menu
-      %button.menu-button
-        %i.fa-solid.fa-bars
-      .dropdown-menu
-        %ul.dropdown-menu_list
-          %li.dropdown-menu_item
+  .header_row
+    .header_left
+      = link_to new_post_path do
+        %i.fa-regular.fa-camera
+    .header_right
+      - if user_signed_in?
+        .dropdown
+          = image_tag current_user.avatar_image, class: 'dropbtn'
+          .dropdown-content
             = link_to 'My Profile', profile_path(current_user.id)
-          %li
             = link_to 'Logout', destroy_user_session_path, data: { turbo_method: 'delete' }
+      - else
+        = link_to 'Login', new_user_session_path, class: 'loginBtn'
+
+  .posts
+    .post
+      .post_meta
+        .post_icon
+          -# = image_tag post.user.avatar_image
+          = image_tag 'default-avatar.png'
+        .post_info
+          .post_author Jmax_21
+          .post_time-ago 3 hours ago
+      .post_images
+        .image-large
+          = image_tag 'post_img-main.png'
+        .image-small.top
+          = image_tag 'post_img-sub_upper'
+        .image-small.bottom
+          = image_tag 'post_img-sub_lower'
+      .post_actions
+        = image_tag 'heart-active.svg', class: 'post_like'
+        = image_tag 'comment.png', class: 'post_comment'
+        = image_tag 'share.png', class: 'post_share'
+      .post_liked-by Jasmine and 12,000 other liked your post
+      .post_text
+        .post_author2 Jmax_21
+        .post_content Summer holiday :3
+
+    .post
+      .post_meta
+        .post_icon
+          -# = image_tag post.user.avatar_image
+          = image_tag 'default-avatar.png'
+        .post_info
+          .post_author Jmax_21
+          .post_time-ago 3 hours ago
+      .post_images
+        .image-large
+          = image_tag 'post_img-main.png'
+        .image-small.top
+          = image_tag 'post_img-sub_upper'
+        .image-small.bottom
+          = image_tag 'post_img-sub_lower'
+      .post_actions
+        = image_tag 'heart-active.svg', class: 'post_like'
+        = image_tag 'comment.png', class: 'post_comment'
+        = image_tag 'share.png', class: 'post_share'
+      .post_liked-by Jasmine and 12,000 other liked your post
+      .post_text
+        .post_author2 Jmax_21
+        .post_content Summer holiday :3
