@@ -1,3 +1,5 @@
+@import "variables";
+
 .top-image {
   width: 100%;
 }
@@ -28,18 +30,20 @@ label {
   opacity: 0.9;
 }
 
-textarea,
-trix-editor {
+textarea {
   width: 100%;
-  padding: 10px 0px;
+  padding: 8px 0px;
   border: none;
   border-bottom: 1px solid #9e9e9e;
-  min-height: 440px;
   resize: vertical;
+  font-family: $font-family;
+  height: 30px;
+  overflow: hidden;
+}
 
-  &.sm {
-    min-height: 160px;
-  }
+textarea::placeholder {
+  color: #BDBDBD;
+  opacity: 0.9;
 }
 
 .btn-primary {
@@ -64,5 +68,28 @@ trix-editor {
   a {
     color: #cccccc;
     font-size: 11px;
+  }
+}
+
+// post#new
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.postBtn {
+  color: $btn-disabled-color;
+  cursor: default;
+
+  &.enable {
+    color: $btn-enabled-color;
+    cursor: pointer;
   }
 }

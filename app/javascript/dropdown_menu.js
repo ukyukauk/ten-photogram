@@ -1,5 +1,4 @@
-// script.js
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   const hamburger = document.querySelector(".hamburger");
   const nav = document.querySelector(".nav");
 
