@@ -17,10 +17,10 @@
     .post
       .post_meta
         .post_icon
-          -# = image_tag post.user.avatar_image
+          -# = image_tag @post.user.avatar_image
           = image_tag 'default-avatar.png'
         .post_info
-          .post_author Jmax_21
+          .post_author_upper Jmax_21
           .post_time-ago 3 hours ago
       .post_images
         .image-large
@@ -35,7 +35,7 @@
         = image_tag 'share.png', class: 'post_share'
       .post_liked-by Jasmine and 12,000 other liked your post
       .post_text
-        .post_author2 Jmax_21
+        .post_author_lower Jmax_21
         .post_content Summer holiday :3
 
     .post
