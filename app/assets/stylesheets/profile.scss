@@ -4,30 +4,7 @@
 
 }
 
-.profilePage_header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.profilePage_backBtn {
-  width: 17px;
-
-  img {
-    width: 100%;
-  }
-}
-
-.profilePage_accountName {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.profilePage_actionBtn {
-
-}
 
 .profilePage_user {
   margin-top: 32px;

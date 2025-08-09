@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   const avatarImage = document.getElementById("avatar-image");
   const avatarInput = document.getElementById("avatar-input");
   const avatarForm = document.getElementById("avatar-form");

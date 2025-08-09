@@ -1,1 +1,31 @@
-posts#new
+.container
+  .header_row
+    .header_left
+      = link_to 'Cancel', root_path, class: 'cancelBtn'
+    .header_center Status
+    .header_right
+      #post-btn.postBtn Post
+
+  .post_form
+    %ul
+      - @post.errors.full_messages.each do |message|
+        %li= message
+    .post_author
+      .author-icon
+        -# = image_tag post.user.avatar_image
+        = image_tag 'default-avatar.png'
+      .author-name
+        = current_user.account
+    = form_with model: @post, local: true, html: { multipart: true, id: "post-form" } do |f|
+      %div
+        = f.label :content, class: 'visually-hidden'
+      %div
+        = f.text_area :content, placeholder: "What's on your mind ?", id: 'post-content'
+      %div
+        = f.file_field :images, multiple: true, accept: 'image/*', style: 'display: none;', id: 'image-input'
+
+      %button.albumBtn#album-button{ type: 'button' }
+        %i.fa-solid.fa-plus
+        %p.album_text Album
+
+      #preview-container

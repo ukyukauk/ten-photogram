@@ -34,7 +34,7 @@ class User < ApplicationRecord
     if avatar&.attached?
       avatar
     else
-      'Ellipse.png'
+      'default-avatar.png'
     end
   end
 end

@@ -1,11 +1,29 @@
-// .header_container {
-//   padding: 44px 16px 0;
-// }
-
-// .header_button {
-//   text-align: right;
-// }
-
 .header {
   height: 44px;
+}
+
+.header_row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_left {
+  width: 17px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.header_center {
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header_right {
+
 }
