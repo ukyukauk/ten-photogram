@@ -56,9 +56,14 @@
               = image_tag post.images[3]
 
         .post_actions
-          = image_tag 'heart-active.svg', class: 'post_like'
-          = image_tag 'comment.png', class: 'post_comment'
-          = image_tag 'share.png', class: 'post_share'
+          .post_like
+            = image_tag 'heart-active.svg'
+          .post_comment
+            = image_tag 'comment.png'
+          .post_share
+            - share_url = polymorphic_url(post, host: request.base_url)
+            = link_to "https://twitter.com/share?#{ {url: share_url}.to_query }", target: '_blank' do
+              = image_tag 'share.png'
         .post_liked-by Jasmine and 12,000 other liked your post
         .post_text
           .post_author_lower
