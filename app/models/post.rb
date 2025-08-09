@@ -20,6 +20,7 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   belongs_to :user
+  has_many :likes, dependent: :destroy
 
   def time_ago_display
     diff_seconds = (Time.current - created_at).to_i
@@ -41,6 +42,19 @@ class Post < ApplicationRecord
       "#{days} #{unit} ago"
     else
       created_at.strftime("%B %-d")
+    end
+  end
+
+  def display_like_count
+    if likes.count == 0
+      ""
+    elsif likes.count == 1
+      "#{likes.first.user.account} liked this post"
+    else
+      first_liker = likes.first.user.account
+      other_likes_count = likes.count - 1
+      unit = other_likes_count == 1 ? "other" : "others"
+      "#{first_liker} and #{other_likes_count} #{unit} liked this post"
     end
   end
 end

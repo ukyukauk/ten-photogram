@@ -56,15 +56,22 @@
               = image_tag post.images[3]
 
         .post_actions
-          .post_like
-            = image_tag 'heart-active.svg'
+          - if current_user.has_liked?(post)
+            .post_like
+              = link_to post_like_path(post), data: { turbo_method: 'delete' } do
+                = image_tag 'heart-active.svg'
+          - else
+            .post_like
+              = link_to post_like_path(post), data: { turbo_method: 'post' } do
+                = image_tag 'heart.svg'
           .post_comment
             = image_tag 'comment.png'
           .post_share
             - share_url = polymorphic_url(post, host: request.base_url)
             = link_to "https://twitter.com/share?#{ {url: share_url}.to_query }", target: '_blank' do
               = image_tag 'share.png'
-        .post_liked-by Jasmine and 12,000 other liked your post
+        .post_liked-by
+          = post.display_like_count
         .post_text
           .post_author_lower
             = post.user.account
