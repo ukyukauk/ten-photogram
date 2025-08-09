@@ -12,9 +12,9 @@ document.addEventListener("turbo:load", () => {
   imageInput.addEventListener("change", function () {
     const files = Array.from(imageInput.files);
 
-    // 3枚以上選んだらアラートしてリセット
-    if (files.length > 3) {
-      alert("画像は3枚までしか選べません。");
+    // 4枚以上選んだらアラートしてリセット
+    if (files.length > 4) {
+      alert("画像は4枚までしか選べません。");
       imageInput.value = ""; // 選択をリセット
       previewContainer.innerHTML = "";
       return;

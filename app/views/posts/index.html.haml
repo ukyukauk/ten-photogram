@@ -14,50 +14,54 @@
         = link_to 'Login', new_user_session_path, class: 'loginBtn'
 
   .posts
-    .post
-      .post_meta
-        .post_icon
-          -# = image_tag @post.user.avatar_image
-          = image_tag 'default-avatar.png'
-        .post_info
-          .post_author_upper Jmax_21
-          .post_time-ago 3 hours ago
-      .post_images
-        .image-large
-          = image_tag 'post_img-main.png'
-        .image-small.top
-          = image_tag 'post_img-sub_upper'
-        .image-small.bottom
-          = image_tag 'post_img-sub_lower'
-      .post_actions
-        = image_tag 'heart-active.svg', class: 'post_like'
-        = image_tag 'comment.png', class: 'post_comment'
-        = image_tag 'share.png', class: 'post_share'
-      .post_liked-by Jasmine and 12,000 other liked your post
-      .post_text
-        .post_author_lower Jmax_21
-        .post_content Summer holiday :3
+    - @posts.each do |post|
+      .post
+        .post_meta
+          .post_icon
+            = image_tag post.user.avatar_image
+          .post_info
+            .post_author_upper
+              = post.user.account
+            .post_time-ago
+              = post.time_ago_display
 
-    .post
-      .post_meta
-        .post_icon
-          -# = image_tag post.user.avatar_image
-          = image_tag 'default-avatar.png'
-        .post_info
-          .post_author Jmax_21
-          .post_time-ago 3 hours ago
-      .post_images
-        .image-large
-          = image_tag 'post_img-main.png'
-        .image-small.top
-          = image_tag 'post_img-sub_upper'
-        .image-small.bottom
-          = image_tag 'post_img-sub_lower'
-      .post_actions
-        = image_tag 'heart-active.svg', class: 'post_like'
-        = image_tag 'comment.png', class: 'post_comment'
-        = image_tag 'share.png', class: 'post_share'
-      .post_liked-by Jasmine and 12,000 other liked your post
-      .post_text
-        .post_author2 Jmax_21
-        .post_content Summer holiday :3
+        - case post.images.count
+        - when 1
+          .post_images.one
+            .image-first
+              = image_tag post.images[0]
+        - when 2
+          .post_images.two
+            .image-first
+              = image_tag post.images[0]
+            .image-second
+              = image_tag post.images[1]
+        - when 3
+          .post_images.three
+            .image-first
+              = image_tag post.images[0]
+            .image-second
+              = image_tag post.images[1]
+            .image-third
+              = image_tag post.images[2]
+        - when 4
+          .post_images.four
+            .image-first
+              = image_tag post.images[0]
+            .image-second
+              = image_tag post.images[1]
+            .image-third
+              = image_tag post.images[2]
+            .image-fourth
+              = image_tag post.images[3]
+
+        .post_actions
+          = image_tag 'heart-active.svg', class: 'post_like'
+          = image_tag 'comment.png', class: 'post_comment'
+          = image_tag 'share.png', class: 'post_share'
+        .post_liked-by Jasmine and 12,000 other liked your post
+        .post_text
+          .post_author_lower
+            = post.user.account
+          .post_content
+            = post.content
