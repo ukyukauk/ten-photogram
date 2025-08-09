@@ -2,7 +2,18 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 import "./avatar_upload";
-// import "./dropdown_menu";
 import "./album_upload";
-import "./postBtn_enable"
+import "./postBtn_enable";
 import "./postBtn_click";
+
+import $ from "jquery";
+import axios from 'axios';
+
+document.addEventListener('turbo:load', () => {
+  $(".post_author_upper").on('click', () => {
+    axios.get('/')
+      .then((response) => {
+        console.log(response)
+      })
+  })
+})
