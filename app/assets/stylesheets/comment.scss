@@ -1,0 +1,40 @@
+@import "variables";
+
+.comments {
+  margin-top: 52px;
+}
+
+.comment {
+
+  & + .comment {
+    margin-top: 32px;
+  }
+}
+
+.comment_meta {
+  display: flex;
+  gap: 14px;
+}
+
+.comment_icon {
+  width: 32px;
+
+  img {
+    width: 100%;
+    border-radius: 50%;
+  }
+}
+
+.comment_text {
+
+}
+
+.comment_author {
+
+}
+
+.comment_content {
+  font-size: 14px;
+  color: $text-light-color;
+  margin-top: 6px;
+}

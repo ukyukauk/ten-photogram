@@ -21,6 +21,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def time_ago_display
     diff_seconds = (Time.current - created_at).to_i
