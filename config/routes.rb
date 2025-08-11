@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   root to: 'posts#index'
 
-  resources :posts
+  resources :posts do
+    resource :like, only: [:show, :create, :destroy]
+  end
 
   resources :profiles, only: [:show] do
     patch :avatar_upload, on: :member  # プロフィール画像変更（自分だけ使う）

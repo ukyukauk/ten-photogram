@@ -2,7 +2,7 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 import "./avatar_upload";
-// import "./dropdown_menu";
 import "./album_upload";
-import "./postBtn_enable"
+import "./postBtn_enable";
 import "./postBtn_click";
+import "./like";
