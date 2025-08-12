@@ -5,4 +5,4 @@ import "./avatar_upload";
 import "./album_upload";
 import "./postBtn_enable";
 import "./postBtn_click";
-import "./like";
+import "./post.js";

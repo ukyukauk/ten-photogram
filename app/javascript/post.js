@@ -59,4 +59,34 @@ document.addEventListener("turbo:load", () => {
         });
     });
   });
+
+  // コメント表示
+  const element = document.getElementById("comments-page");
+  if (!element) return;
+
+  const postId = element.dataset.postId;
+  const $container = $(element).find(".comments-container");
+  if (!postId || $container.length === 0) return;
+
+  axios.get(`/posts/${postId}/comments.json`)
+    .then((response) => {
+      const comments = response.data;
+      comments.forEach((comment) => {
+        $(".comments-container").append(
+          `
+          <div class="comment">
+            <div class="comment_meta">
+              <div class="comment_icon">
+                <img src="${comment.user.avatar_image}">
+              </div>
+              <div class="comment_text">
+                <div class="comment_author">${comment.user.account}</div>
+                <div class="comment_content">${comment.content}</div>
+              </div>
+            </div>
+          </div>
+          `
+        );
+      })
+  });
 });

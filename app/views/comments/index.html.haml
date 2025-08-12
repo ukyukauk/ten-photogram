@@ -6,16 +6,20 @@
     .header_center Comment
     .header_right
 
-  .comments
-    - @comments.each do |comment|
-      .comment
-        .comment_meta
-          .comment_icon
-            = image_tag comment.user.avatar_image
-          .comment_text
-            .comment_author
-              = comment.user.account
-            .comment_content
-              = comment.content
+  #comments-page{ data: { post_id: @post.id } }
+    .comments
+      .comments-container
 
-  = link_to 'コメントを追加', new_post_comment_path(@post)
+  -# .comments
+  -#   - @comments.each do |comment|
+  -#     .comment
+  -#       .comment_meta
+  -#         .comment_icon
+  -#           = image_tag comment.user.avatar_image
+  -#         .comment_text
+  -#           .comment_author
+  -#             = comment.user.account
+  -#           .comment_content
+  -#             = comment.content
+
+  -# = link_to 'コメントを追加', new_post_comment_path(@post)
