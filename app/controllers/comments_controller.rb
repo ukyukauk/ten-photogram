@@ -21,12 +21,9 @@ class CommentsController < ApplicationController
     post = Post.find(params[:post_id])
     @comment = post.comments.build(comment_params)
     @comment.user = current_user
-    if @comment.save
-      redirect_to post_comments_path(post), notice: 'コメントを投稿しました'
-    else
-      flash.now[:error] = 'コメントを投稿できませんでした'
-      render :new, status: :unprocessable_entity
-    end
+    @comment.save!
+
+    render json: @comment
   end
 
   private

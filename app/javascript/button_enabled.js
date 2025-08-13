@@ -1,35 +1,29 @@
-document.addEventListener("turbo:load", () => {
-  // ポスト
-  const postContent = document.getElementById("post-content");
-  const postButton = document.getElementById("post-btn");
+import $ from "jquery";
 
-  if (postContent && postButton) {
-    postContent.addEventListener("input", () => {
-      if (postContent.value.trim().length > 0) {
-        postButton.classList.add("enable");
-        postButton.disabled = false;
-      } else {
-        postButton.classList.remove("enable");
-        postButton.disabled = true;
-      }
-    });
-  }
-
-
-  // コメント
-  const commentContent = document.getElementById("comment_content");
-  const commentPostButton = document.getElementById("comment-post-btn");
-
-  if (commentContent && commentPostButton) {
-    commentContent.addEventListener("input", () => {
-      if (commentContent.value.trim().length > 0) {
-        commentPostButton.classList.add("enable");
-        commentPostButton.disabled = false;
-      } else {
-        commentPostButton.classList.remove("enable");
-        commentPostButton.disabled = true;
-      }
-    });
+$(document).on("turbo:load", function () {
+  // 入力内容に応じてボタンの状態を切り替え;
+  const toggleBtn = ($input, $btn) => {
+    const hasText = ($input.val() || "").trim().length > 0;
+    $btn.toggleClass("enable", hasText).prop("disabled", !hasText);
   };
 
+  // --- ポスト ---
+  // 入力のたびに切り替え
+  $(document).on("input", "#post-content", function () {
+    toggleBtn($(this), $("#post-btn"));
+  });
+
+  // 初期表示時にも正しい状態に
+  if ($("#post-content").length && $("#post-btn").length) {
+    toggleBtn($("#post-content"), $("#post-btn"));
+  }
+
+  // --- コメント ---
+  $(document).on("input", "#comment_content", function () {
+    toggleBtn($(this), $("#comment-post-btn"));
+  });
+
+  if ($("#comment_content").length && $("#comment-post-btn").length) {
+    toggleBtn($("#comment_content"), $("#comment-post-btn"));
+  }
 });

@@ -2,10 +2,14 @@
 
 .comments {
   margin-top: 52px;
+  margin-bottom: 80px;
+}
+
+.comments-container {
+
 }
 
 .comment {
-
   & + .comment {
     margin-top: 32px;
   }
@@ -18,10 +22,13 @@
 
 .comment_icon {
   width: 32px;
+  height: 32px;
 
   img {
-    width: 100%;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
+    object-fit: cover;
   }
 }
 

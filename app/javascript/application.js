@@ -4,5 +4,6 @@ import "controllers";
 import "./avatar_upload";
 import "./album_upload";
 import "./button_enabled";
-import "./button_click.js";
+import "./button_click";
 import "./post.js";
+import "./axios_setup";
