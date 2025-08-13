@@ -38,3 +38,48 @@
   color: $text-light-color;
   margin-top: 6px;
 }
+
+.comment_input_wrapper {
+  position: fixed;
+  bottom: 20px;
+  width: calc(100% - 16px * 2);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.comment_inner {
+  position: relative;
+}
+
+.comment_img {
+  position: absolute;
+  left: 21px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  padding: 12px 0 13px;
+}
+
+.comment_submit {
+  position: absolute;
+  right: 21px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $btn-disabled-color;
+  width: 20px;
+  cursor: default;
+  background: transparent;
+  border: none;
+}
+
+.fa-solid.fa-circle-up {
+  font-size: 20px;
+}
+
+.comment_textarea {
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  height: 42px;
+  padding: 12px 0 12px 44px;
+  resize: none;
+}

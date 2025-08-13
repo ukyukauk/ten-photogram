@@ -3,6 +3,6 @@ import "@hotwired/turbo-rails";
 import "controllers";
 import "./avatar_upload";
 import "./album_upload";
-import "./postBtn_enable";
-import "./postBtn_click";
+import "./button_enabled";
+import "./button_click.js";
 import "./post.js";

@@ -10,16 +10,9 @@
     .comments
       .comments-container
 
-  -# .comments
-  -#   - @comments.each do |comment|
-  -#     .comment
-  -#       .comment_meta
-  -#         .comment_icon
-  -#           = image_tag comment.user.avatar_image
-  -#         .comment_text
-  -#           .comment_author
-  -#             = comment.user.account
-  -#           .comment_content
-  -#             = comment.content
-
-  -# = link_to 'コメントを追加', new_post_comment_path(@post)
+    .comment_input_wrapper
+      .comment_inner
+        = image_tag 'comment.png', class: 'comment_img'
+        %button.comment_submit#comment-post-btn{ type: 'button' }
+          %i.fa-solid.fa-circle-up
+        = text_area_tag :comment_content, '', class: 'comment_textarea'

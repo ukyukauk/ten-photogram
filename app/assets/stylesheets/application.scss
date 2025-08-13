@@ -47,3 +47,8 @@ a {
 .hidden {
   display: none;
 }
+
+.enable {
+  color: $btn-enabled-color;
+  cursor: pointer;
+}

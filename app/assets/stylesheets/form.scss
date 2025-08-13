@@ -42,7 +42,7 @@ textarea {
 }
 
 textarea::placeholder {
-  color: #BDBDBD;
+  color: #bdbdbd;
   opacity: 0.9;
 }
 
@@ -87,9 +87,4 @@ textarea::placeholder {
 .postBtn {
   color: $btn-disabled-color;
   cursor: default;
-
-  &.enable {
-    color: $btn-enabled-color;
-    cursor: pointer;
-  }
 }
