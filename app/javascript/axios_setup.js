@@ -1,12 +1,8 @@
 import axios from "axios";
-import $ from "jquery";
+import Rails from "@rails/ujs";
 
-// Turboページ読み込みごとに最新トークンをセット
-$(document).on("turbo:load", function () {
-  const token = $('meta[name="csrf-token"]').attr("content");
-  if (token) {
-    axios.defaults.headers.common["X-CSRF-Token"] = token;
-  }
-});
+Rails.start();
+
+axios.defaults.headers.common["X-CSRF-Token"] = Rails.csrfToken();
 
 export default axios;
