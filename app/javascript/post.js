@@ -13,6 +13,24 @@ const handleHeartDisplay = ($post, hasLiked) => {
   $post.find(hasLiked ? ".active-heart" : ".inactive-heart").removeClass("hidden");
 };
 
+const appendNewComment = (comment) => {
+  $(".comments-container").append(
+    `
+    <div class="comment">
+      <div class="comment_meta">
+        <div class="comment_icon">
+          <img src="${comment.user.avatar_image}">
+        </div>
+        <div class="comment_text">
+          <div class="comment_author">${comment.user.account}</div>
+          <div class="comment_content">${comment.content}</div>
+        </div>
+      </div>
+    </div>
+    `
+  );
+}
+
 document.addEventListener("turbo:load", () => {
   // ループ処理
   $(".js-post").each((_, el) => {
@@ -72,21 +90,7 @@ document.addEventListener("turbo:load", () => {
     .then((response) => {
       const comments = response.data;
       comments.forEach((comment) => {
-        $(".comments-container").append(
-          `
-          <div class="comment">
-            <div class="comment_meta">
-              <div class="comment_icon">
-                <img src="${comment.user.avatar_image}">
-              </div>
-              <div class="comment_text">
-                <div class="comment_author">${comment.user.account}</div>
-                <div class="comment_content">${comment.content}</div>
-              </div>
-            </div>
-          </div>
-          `
-        );
+        appendNewComment(comment);
       })
   });
 });

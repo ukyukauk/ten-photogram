@@ -2,12 +2,6 @@ import axios from "./axios_setup";
 import $ from "jquery";
 
 $(document).on("turbo:load", function () {
-  // 毎回最新の CSRF をセット
-  const token = $('meta[name="csrf-token"]').attr("content");
-  if (token) {
-    axios.defaults.headers.common["X-CSRF-Token"] = token;
-  }
-
   // --- ポスト ---
   $(document).on("click", "#post-btn", function () {
     const $btn = $(this);
