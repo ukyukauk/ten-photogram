@@ -2,6 +2,8 @@ import $ from "jquery";
 import axios from "./axios_setup";
 
 const appendNewComment = (comment) => {
+  if ($(".comments-container").find(`[data-comment-id="${comment.id}"]`).length) return;
+
   $(".comments-container").append(
     `
     <div class="comment">
@@ -19,18 +21,22 @@ const appendNewComment = (comment) => {
   );
 };
 
-$(document).on("turbo:load", function () {
-  const $element = $("#comments-page");
-  if ($element.length === 0) return;
+$(document)
+  .off("turbo:load.comments")
+  .on("turbo:load", function () {
+    const $element = $("#comments-page");
+    if ($element.length === 0) return;
 
-  const postId = $element.data("postId");
-  const $container = $element.find(".comments-container");
-  if (!postId || $container.length === 0) return;
+    const postId = $element.data("postId");
+    const $container = $element.find(".comments-container");
+    if (!postId || $container.length === 0) return;
 
-  axios.get(`/posts/${postId}/comments.json`).then((response) => {
-    const comments = response.data;
-    comments.forEach((comment) => {
-      appendNewComment(comment);
+    axios.get(`/posts/${postId}/comments.json`).then((response) => {
+      $container.empty();
+      const comments = response.data;
+      comments.forEach((comment) => {
+        appendNewComment(comment);
+      });
+      $("#comment_content").val(""); // 入力欄クリア
     });
   });
-});
