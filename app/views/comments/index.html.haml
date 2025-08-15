@@ -1,0 +1,18 @@
+.container
+  .header_row
+    .header_left
+      = link_to :back do
+        = image_tag 'back.png', class: 'header_back'
+    .header_center Comment
+    .header_right
+
+  #comments-page{ data: { post_id: @post.id } }
+    .comments
+      .comments-container
+
+    .comment_input_wrapper
+      .comment_inner
+        = image_tag 'comment.png', class: 'comment_img'
+        %button.comment_submit#comment-post-btn{ type: 'button' }
+          %i.fa-solid.fa-circle-up
+        = text_area_tag :comment_content, '', class: 'comment_textarea'

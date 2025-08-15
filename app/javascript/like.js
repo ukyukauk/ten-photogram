@@ -1,61 +1,56 @@
 import $ from "jquery";
-import axios from "axios";
-import Rails from "@rails/ujs";
-
-Rails.start();
-
-axios.defaults.headers.common["X-CSRF-Token"] = Rails.csrfToken();
+import axios from "./modules/axios";
 
 const handleHeartDisplay = ($post, hasLiked) => {
-  // 一度非表示にする
-  $post.find(".active-heart", ".inactive-heart").addClass("hidden");
-
+  $post.find(".active-heart, .inactive-heart").addClass("hidden"); // 一度非表示
   $post.find(hasLiked ? ".active-heart" : ".inactive-heart").removeClass("hidden");
 };
 
-document.addEventListener("turbo:load", () => {
-  // ループ処理
-  $(".js-post").each((_, el) => {
-    const $post = $(el);
+$(document).on("turbo:load", function () {
+  $(".js-post").each(function () {
+    const $post = $(this);
     const postId = $post.data("postId");
-
     if (!postId) return;
 
     // ハートの色でいいねの表示
-    axios.get(`/posts/${postId}/like`).then((response) => {
-      const hasLiked = response.data.hasLiked;
-      handleHeartDisplay($post, hasLiked);
-    });
+    axios
+      .get(`/posts/${postId}/like`)
+      .then((res) => {
+        const hasLiked = res.data.hasLiked;
+        handleHeartDisplay($post, hasLiked);
+      })
+      .catch((err) => {
+        console.log(err);
+        window.alert("いいねの取得に失敗しました。");
+      });
 
-    // いいねする
-    $post.off("click", ".inactive-heart").on("click", ".inactive-heart", (e) => {
+    // いいね
+    $post.off("click", ".inactive-heart").on("click", ".inactive-heart", function () {
       axios
         .post(`/posts/${postId}/like`)
-        .then((response) => {
-          if (response.data.status == "ok") {
-            $post.find(".active-heart").removeClass("hidden");
-            $post.find(".inactive-heart").addClass("hidden");
+        .then((res) => {
+          if (res.data.status === "ok") {
+            handleHeartDisplay($post, true);
           }
         })
-        .catch((e) => {
-          window.alert("Error");
-          console.log(e);
+        .catch((err) => {
+          console.log(err);
+          window.alert("いいねに失敗しました。");
         });
     });
 
     // いいねを解除
-    $post.off("click", ".active-heart").on("click", ".active-heart", (e) => {
+    $post.off("click", ".active-heart").on("click", ".active-heart", function () {
       axios
         .delete(`/posts/${postId}/like`)
-        .then((response) => {
-          if (response.data.status == "ok") {
-            $post.find(".active-heart").addClass("hidden");
-            $post.find(".inactive-heart").removeClass("hidden");
+        .then((res) => {
+          if (res.data.status === "ok") {
+            handleHeartDisplay($post, false);
           }
         })
-        .catch((e) => {
-          window.alert("Error");
-          console.log(e);
+        .catch((err) => {
+          console.log(err);
+          window.alert("いいね解除に失敗している");
         });
     });
   });

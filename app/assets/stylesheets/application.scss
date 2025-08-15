@@ -6,6 +6,7 @@
 @import "common";
 @import "post";
 @import "images";
+@import "comment";
 // @import 'devise';
 
 html {
@@ -45,4 +46,9 @@ a {
 
 .hidden {
   display: none;
+}
+
+.enable {
+  color: $btn-enabled-color;
+  cursor: pointer;
 }

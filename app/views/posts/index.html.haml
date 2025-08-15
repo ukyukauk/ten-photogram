@@ -57,7 +57,8 @@
           .post_like.hidden.inactive-heart
             = image_tag 'heart.svg'
           .post_comment
-            = image_tag 'comment.png'
+            = link_to post_comments_path(post) do
+              = image_tag 'comment.png'
           .post_share
             - share_url = polymorphic_url(post, host: request.base_url)
             = link_to "https://twitter.com/share?#{ {url: share_url}.to_query }", target: '_blank' do
