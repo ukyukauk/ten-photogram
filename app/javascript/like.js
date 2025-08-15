@@ -1,5 +1,5 @@
 import $ from "jquery";
-import axios from "./axios_setup";
+import axios from "./modules/axios";
 
 const handleHeartDisplay = ($post, hasLiked) => {
   $post.find(".active-heart, .inactive-heart").addClass("hidden"); // 一度非表示

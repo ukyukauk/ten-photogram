@@ -1,5 +1,5 @@
 import $ from "jquery";
-import axios from "./axios_setup";
+import axios from "./modules/axios";
 import { appendNewCommentEvent } from "./modules/comment_display";
 import { toggleButtonEvent } from "./modules/button_enabled";
 
