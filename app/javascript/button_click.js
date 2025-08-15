@@ -1,6 +1,4 @@
-import axios from "./axios_setup";
 import $ from "jquery";
-import { appendNewCommentEvent } from "./modules/comment_display";
 
 $(document)
   .off("turbo:load.buttons")
@@ -16,30 +14,4 @@ $(document)
         $btn.prop("disabled", true);
         $form.trigger("submit");
       });
-
-    // --- コメント ---
-    const $page = $("#comments-page");
-    if ($page.length) {
-      const postId = $page.data("postId");
-
-      $(document)
-        .off("click.comment", "#comment-post-btn")
-        .on("click.comment", "#comment-post-btn", function () {
-          const $btn = $(this);
-          const content = ($("#comment_content").val() || "").trim();
-
-          if (!content) {
-            window.alert("コメントを入力してください");
-            return;
-          }
-
-          $btn.prop("disabled", true);
-
-          axios.post(`/posts/${postId}/comments`, { comment: { content: content } }).then((res) => {
-            const comment = res.data;
-            appendNewCommentEvent(comment);
-            $("#comment_content").val(""); // 入力欄クリア
-          });
-        });
-    }
   });
