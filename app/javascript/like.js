@@ -13,23 +13,29 @@ $(document).on("turbo:load", function () {
     if (!postId) return;
 
     // ハートの色でいいねの表示
-    axios.get(`/posts/${postId}/like`).then((response) => {
-      const hasLiked = response.data.hasLiked;
-      handleHeartDisplay($post, hasLiked);
-    });
+    axios
+      .get(`/posts/${postId}/like`)
+      .then((res) => {
+        const hasLiked = res.data.hasLiked;
+        handleHeartDisplay($post, hasLiked);
+      })
+      .catch((err) => {
+        console.log(err);
+        window.alert("いいねの取得に失敗しました。");
+      });
 
     // いいね
     $post.off("click", ".inactive-heart").on("click", ".inactive-heart", function () {
       axios
         .post(`/posts/${postId}/like`)
-        .then((response) => {
-          if (response.data.status === "ok") {
+        .then((res) => {
+          if (res.data.status === "ok") {
             handleHeartDisplay($post, true);
           }
         })
-        .catch((e) => {
-          window.alert("Error");
-          console.log(e);
+        .catch((err) => {
+          console.log(err);
+          window.alert("いいねに失敗しました。");
         });
     });
 
@@ -37,14 +43,14 @@ $(document).on("turbo:load", function () {
     $post.off("click", ".active-heart").on("click", ".active-heart", function () {
       axios
         .delete(`/posts/${postId}/like`)
-        .then((response) => {
-          if (response.data.status === "ok") {
+        .then((res) => {
+          if (res.data.status === "ok") {
             handleHeartDisplay($post, false);
           }
         })
-        .catch((e) => {
-          window.alert("Error");
-          console.log(e);
+        .catch((err) => {
+          console.log(err);
+          window.alert("いいね解除に失敗している");
         });
     });
   });
