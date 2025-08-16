@@ -9,13 +9,20 @@
       = link_to 'Follow', '#'
 
   .profilePage_user
-    .profilePage_user_img
-      = form_with model: @user, url: avatar_upload_profile_path, local: true, html: { multipart: true, id: "avatar-form" } do |f|
-        = f.file_field :avatar, accept: 'image/*', style: "display: none", id: "avatar-input"
+    - if @user == current_user
+      .profilePage_user_img.current_user
+        = form_with model: @user, url: avatar_upload_profile_path, local: true, html: { multipart: true, id: "avatar-form" } do |f|
+          = f.file_field :avatar, accept: 'image/*', style: "display: none", id: "avatar-input"
+          - if @user.avatar.attached?
+            = image_tag @user.avatar, id: "avatar-image", class: "profile-avatar"
+          - else
+            = image_tag "default-avatar.png", id: "avatar-image", class: "profile-avatar"
+    - else
+      .profilePage_user_img
         - if @user.avatar.attached?
-          = image_tag @user.avatar, id: "avatar-image", class: "profile-avatar"
+          = image_tag @user.avatar, class: "profile-avatar"
         - else
-          = image_tag "default-avatar.png", id: "avatar-image", class: "profile-avatar"
+          = image_tag "default-avatar.png", class: "profile-avatar"
 
     .profilePage_user_data
       .profilePage_user_content

@@ -12,6 +12,10 @@
   width: 84px;
   height: 84px;
   margin: 0 auto;
+
+  &.current_user {
+    cursor: pointer;
+  }
 }
 
 .profile-avatar {
@@ -19,7 +23,6 @@
   height: 84px;
   border-radius: 50%;
   object-fit: cover;
-  cursor: pointer;
 }
 
 .profilePage_user_data {

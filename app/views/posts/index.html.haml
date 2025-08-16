@@ -18,7 +18,8 @@
       .post.js-post{ data: { post_id: post.id} }
         .post_meta
           .post_icon
-            = image_tag post.user.avatar_image
+            = link_to profile_path(post.user.id) do
+              = image_tag post.user.avatar_image
           .post_info
             .post_author_upper
               = post.user.account

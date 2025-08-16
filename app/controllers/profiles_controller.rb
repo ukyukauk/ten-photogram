@@ -12,6 +12,10 @@ class ProfilesController < ApplicationController
   end
 
   def avatar_upload
+    unless current_user == @user
+      redirect_to profile_path, notice: '権限がありません' and return
+    end
+
     @user = current_user
     if @user.update(avatar_params)
       redirect_to profile_path, notice: 'プロフィール画像を変更しました'
