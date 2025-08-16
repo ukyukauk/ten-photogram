@@ -1,0 +1,9 @@
+%p #{@mentioned.account} さん
+%p #{@mentioner.account}さんからあなた宛てのメンションがあります。
+
+%p コメント内容：
+%div
+  = @comment.content
+
+%div
+  = link_to 'コメントを確認する', post_comments_url(@post)
