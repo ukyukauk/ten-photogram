@@ -39,6 +39,7 @@ gem 'devise'
 gem 'hamlit'
 gem 'importmap-rails'
 gem 'sassc-rails'
+gem 'sidekiq'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -59,9 +60,9 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'erb2haml'
-  gem 'web-console'
   gem 'letter_opener'
   gem 'letter_opener_web', '~> 3.0'
+  gem 'web-console'
 end
 
 group :test do
