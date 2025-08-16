@@ -43,7 +43,7 @@ class Comment < ApplicationRecord
   private
   def notify_mentions
     mentioned_users.find_each do |mentioned|
-      MentionMailer.new_mention(mentioned, user, self).deliver_now
+      MentionMailer.new_mention(mentioned, user, self).deliver_later
     end
   end
 end
