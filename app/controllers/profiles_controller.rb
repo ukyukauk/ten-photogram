@@ -5,12 +5,6 @@ class ProfilesController < ApplicationController
   def show
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def avatar_upload
     unless current_user == @user
       redirect_to profile_path, notice: '権限がありません' and return
