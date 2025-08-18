@@ -1,0 +1,18 @@
+.container.profilePage
+  .header_row
+    .header_left
+      = link_to :back do
+        = image_tag 'back.png', class: 'header_back'
+    .header_center
+      = @user.account
+    .header_right
+      = link_to 'Follow', '#'
+
+  .profilePage_user
+    .profilePage_user_img
+      - if @user.avatar.attached?
+        = image_tag @user.avatar, class: "profile-avatar"
+      - else
+        = image_tag "default-avatar.png", class: "profile-avatar"
+
+    = render 'commons/profile'
