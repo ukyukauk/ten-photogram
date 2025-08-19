@@ -27,11 +27,12 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: [:show] do
-    patch :avatar_upload
+    resource :avatar, only: [:update]
   end
 
   resources :accounts, only: [:show] do
     resources :follows, only: [:create]
+    resources :unfollows, only: [:create]
   end
 
 end

@@ -9,7 +9,7 @@
 
   .profilePage_user
     .profilePage_user_img.current_user
-      = form_with model: @user, url: avatar_upload_profile_path, local: true, html: { multipart: true, id: "avatar-form" } do |f|
+      = form_with model: @user, url: profile_avatar_path, local: true, html: { multipart: true, id: "avatar-form" } do |f|
         = f.file_field :avatar, accept: 'image/*', style: "display: none", id: "avatar-input"
         - if @user.avatar.attached?
           = image_tag @user.avatar, id: "avatar-image", class: "profile-avatar"
