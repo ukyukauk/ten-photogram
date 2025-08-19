@@ -6,7 +6,10 @@
     .header_center
       = @user.account
     .header_right
-      = link_to 'Follow', '#'
+      - if current_user&.has_followed?(@user)
+        %p フォロー済
+      - else
+        = link_to 'Follow', account_follows_path(@user), data: { turbo_method: 'post' }
 
   .profilePage_user
     .profilePage_user_img

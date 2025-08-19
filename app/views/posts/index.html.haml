@@ -18,8 +18,7 @@
       .post.js-post{ data: { post_id: post.id} }
         .post_meta
           .post_icon
-            - path = (post.user == current_user) ? profile_path : account_path(post.user)
-            = link_to path do
+            = link_to account_path(post.user) do
               = image_tag post.user.avatar_image
           .post_info
             .post_author_upper

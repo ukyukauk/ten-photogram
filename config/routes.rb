@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     patch :avatar_upload
   end
 
-  resources :accounts, only: [:show]
+  resources :accounts, only: [:show] do
+    resources :follows, only: [:create]
+  end
 
 end
