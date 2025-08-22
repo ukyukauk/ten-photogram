@@ -7,23 +7,10 @@
       = @user.account
     .header_right
       .follow_actions{ data: { user_id: @user.id } }
-        -# - followed_now = current_user&.has_followed?(@user)
-        -# %button#follow-btn.followBtn{ data: { followed: (followed_now ? "true" : "false") } }
-        -#   = followed_now ? "Unfollow" : "Follow"
-
         - if current_user&.has_followed?(@user)
           %button#follow-btn.followBtn{ data: { followed: "true" } } Unfollow
         - else
           %button#follow-btn.unfollowBtn{ data: { followed: "false" } } Follow
-
-        -# .followBtn.hidden Follow
-        -# .unfollowBtn.hidden Unfollow
-
-      -# - if current_user&.has_followed?(@user)
-      -#   = link_to 'Unfollow', account_unfollows_path(@user), data: { turbo_method: 'post' }, class: 'unfollowBtn'
-      -# - else
-      -#   = link_to 'Follow', account_follows_path(@user), data: { turbo_method: 'post' }, class: 'followBtn'
-
   .profilePage_user
     .profilePage_user_img
       - if @user.avatar.attached?

@@ -7,7 +7,7 @@
 @import "post";
 @import "images";
 @import "comment";
-// @import 'devise';
+@import "follow";
 
 html {
   word-spacing: 1px;
@@ -41,11 +41,11 @@ a {
 
 button {
   background: none;
-	border: none;
-	outline: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .container {

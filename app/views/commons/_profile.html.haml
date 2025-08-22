@@ -5,12 +5,14 @@
     .profilePage_user_data_label
       Posts
   .profilePage_user_content
-    .profilePage_user_data_count#followers-count
-      = @user.followers.count
-    .profilePage_user_data_label
-      Followers
+    = link_to account_followers_path(@user) do
+      .profilePage_user_data_count#followers-count
+        = @user.followers.count
+      .profilePage_user_data_label
+        Followers
   .profilePage_user_content
-    .profilePage_user_data_count
-      = @user.followings.count
-    .profilePage_user_data_label
-      Following
+    = link_to account_followings_path(@user) do
+      .profilePage_user_data_count
+        = @user.followings.count
+      .profilePage_user_data_label
+        Following

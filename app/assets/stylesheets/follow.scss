@@ -1,0 +1,33 @@
+.users {
+  margin-top: 50px;
+
+}
+
+.user {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 30px;
+
+  & + .user {
+    padding-top: 30px;
+  }
+}
+
+.user_meta {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 20px;
+}
+
+.user_icon {
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.user_name {
+  font-size: 14px;
+}

@@ -4,14 +4,7 @@
       = link_to new_post_path do
         %i.fa-regular.fa-camera
     .header_right
-      - if user_signed_in?
-        .dropdown
-          = image_tag current_user.avatar_image, class: 'dropbtn'
-          .dropdown-content
-            = link_to 'My Profile', profile_path
-            = link_to 'Logout', destroy_user_session_path, data: { turbo_method: 'delete' }
-      - else
-        = link_to 'Login', new_user_session_path, class: 'loginBtn'
+      = render 'commons/dropdown'
 
   .posts
     - @posts.each do |post|
