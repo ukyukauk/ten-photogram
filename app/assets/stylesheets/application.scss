@@ -39,6 +39,15 @@ a {
   color: $text-base-color;
 }
 
+button {
+  background: none;
+	border: none;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
 .container {
   padding: 0 16px 20px;
   width: 100%;

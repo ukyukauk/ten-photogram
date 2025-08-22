@@ -6,3 +6,4 @@ import "./album_upload";
 import "./like.js";
 import "./comment.js";
 import "./post.js";
+import "./follow.js";

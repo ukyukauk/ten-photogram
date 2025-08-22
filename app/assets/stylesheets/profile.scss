@@ -1,7 +1,9 @@
 @import "variables";
 
-.container.profilePage {
-
+.followBtn,
+.unfollowBtn {
+  color: $btn-enabled-color;
+  cursor: pointer;
 }
 
 .profilePage_user {
