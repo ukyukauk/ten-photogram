@@ -1,9 +1,9 @@
 .users
   - users.each do |user|
     .user
-      .user_meta
-        .user_icon
-          = link_to account_path(user) do
+      = link_to account_path(user) do
+        .user_meta
+          .user_icon
             = image_tag user.avatar_image
-        .user_name
-          = user.account
+          .user_name
+            = user.account
