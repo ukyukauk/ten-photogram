@@ -8,7 +8,9 @@ const appendNewCommentEvent = (comment) => {
     <div class="comment">
       <div class="comment_meta">
         <div class="comment_icon">
-          <img src="${comment.user.avatar_image}">
+          <a href="/accounts/${comment.user.id}">
+            <img src="${comment.user.avatar_image}">
+          </a>
         </div>
         <div class="comment_text">
           <div class="comment_author">${comment.user.account}</div>

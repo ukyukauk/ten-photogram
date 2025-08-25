@@ -3,6 +3,7 @@
     .user
       .user_meta
         .user_icon
-          = image_tag user.avatar_image
+          = link_to account_path(user) do
+            = image_tag user.avatar_image
         .user_name
           = user.account
