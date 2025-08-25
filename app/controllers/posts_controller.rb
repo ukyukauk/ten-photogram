@@ -21,7 +21,6 @@ class PostsController < ApplicationController
       .where(id: ids)
       .order(created_at: :desc)
       .includes(:user, images_attachments: :blob)
-
   end
 
   def new

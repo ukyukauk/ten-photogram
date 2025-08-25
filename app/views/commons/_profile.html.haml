@@ -16,3 +16,9 @@
         = @user.followings.count
       .profilePage_user_data_label
         Following
+
+.profilePage_user_posts
+  - @posts.each do |post|
+    .profilePage_user_post
+      = link_to account_account_posts_path(@user) do
+        = render 'commons/images', post: post

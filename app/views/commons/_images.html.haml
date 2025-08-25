@@ -1,0 +1,25 @@
+- case post.images.count
+- when 1
+  .post_images.one
+    .image-first
+      = image_tag post.images[0]
+- when 2
+  .post_images.two
+    .image-first
+      = image_tag post.images[0]
+    .image-second
+      = image_tag post.images[1]
+- when 3
+  .post_images.three
+    .image-first
+      = image_tag post.images[0]
+    .image-second
+      = image_tag post.images[1]
+    .image-third
+      = image_tag post.images[2]
+- when 4
+  .post_images.four
+    = image_tag post.images[0]
+    = image_tag post.images[1]
+    = image_tag post.images[2]
+    = image_tag post.images[3]
