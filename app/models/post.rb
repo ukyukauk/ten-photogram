@@ -47,12 +47,13 @@ class Post < ApplicationRecord
   end
 
   def display_like_count
+    first_liker = likes.includes(:user).order(:created_at).first&.user&.account
+
     if likes.count == 0
-      ''
+      ""
     elsif likes.count == 1
-      "#{likes.first.user.account} liked this post"
+      "#{first_liker} liked this post"
     else
-      first_liker = likes.first.user.account
       other_likes_count = likes.count - 1
       unit = other_likes_count == 1 ? 'other' : 'others'
       "#{first_liker} and #{other_likes_count} #{unit} liked this post"
