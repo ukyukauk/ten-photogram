@@ -1,9 +1,5 @@
 @import "variables";
 
-// .header {
-//   height: 44px;
-// }
-
 .header_row {
   position: fixed;
   top: 0;
@@ -17,13 +13,6 @@
   z-index: 1000;
   padding: 44px 16px 10px;
 }
-
-// .header_row {
-//   position: relative;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-// }
 
 .header_left {
   width: 17px;

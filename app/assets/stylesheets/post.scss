@@ -30,10 +30,6 @@
   }
 }
 
-.post_info {
-
-}
-
 .post_author_upper {
   font-size: 14px;
   font-weight: bold;
@@ -111,10 +107,11 @@
 }
 
 .author-icon {
-  width: 40px;
-
   img {
-    width: 100%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 }
 
