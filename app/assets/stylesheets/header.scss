@@ -1,15 +1,29 @@
 @import "variables";
 
-.header {
-  height: 44px;
-}
+// .header {
+//   height: 44px;
+// }
 
 .header_row {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 78px;
+  background-color: $base-bg-color;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 1000;
+  padding: 44px 16px 10px;
 }
+
+// .header_row {
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// }
 
 .header_left {
   width: 17px;

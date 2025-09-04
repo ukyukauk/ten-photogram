@@ -20,5 +20,5 @@
 .profilePage_user_posts
   - @posts.each do |post|
     .profilePage_user_post
-      = link_to account_account_posts_path(@user) do
+      = link_to account_account_posts_path(@user, anchor: "post-#{post.id}") do
         = render 'commons/images', post: post
