@@ -1,0 +1,24 @@
+.profilePage_user_data
+  .profilePage_user_content
+    .profilePage_user_data_count
+      = @user.posts.count
+    .profilePage_user_data_label
+      Posts
+  .profilePage_user_content
+    = link_to account_followers_path(@user) do
+      .profilePage_user_data_count#followers-count
+        = @user.followers.count
+      .profilePage_user_data_label
+        Followers
+  .profilePage_user_content
+    = link_to account_followings_path(@user) do
+      .profilePage_user_data_count
+        = @user.followings.count
+      .profilePage_user_data_label
+        Following
+
+.profilePage_user_posts
+  - @posts.each do |post|
+    .profilePage_user_post
+      = link_to account_account_posts_path(@user, anchor: "post-#{post.id}") do
+        = render 'commons/images', post: post

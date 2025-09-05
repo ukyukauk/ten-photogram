@@ -1,0 +1,18 @@
+.container
+  .header_row
+    .header_left
+      = link_to :back do
+        = image_tag 'back.png', class: 'header_back'
+    .header_center #{title}
+    .header_right
+      = render 'commons/dropdown'
+
+  .users
+    - users.each do |user|
+      .user
+        = link_to account_path(user) do
+          .user_meta
+            .user_icon
+              = image_tag user.avatar_image
+            .user_name
+              = user.account

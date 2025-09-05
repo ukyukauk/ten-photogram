@@ -5,6 +5,7 @@
         = image_tag 'back.png', class: 'header_back'
     .header_center Comment
     .header_right
+      = render 'commons/dropdown'
 
   #comments-page{ data: { post_id: @post.id } }
     .comments

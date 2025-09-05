@@ -6,6 +6,16 @@ const handleHeartDisplay = ($post, hasLiked) => {
   $post.find(hasLiked ? ".active-heart" : ".inactive-heart").removeClass("hidden");
 };
 
+const updateLikeText = ($post, text) => {
+  const $el = $post.find(".post_liked-by");
+
+  if (text && text.length > 0) {
+    $el.text(text).removeClass("hidden");
+  } else {
+    $el.text("").addClass("hidden");
+  }
+};
+
 $(document).on("turbo:load", function () {
   $(".js-post").each(function () {
     const $post = $(this);
@@ -16,8 +26,8 @@ $(document).on("turbo:load", function () {
     axios
       .get(`/posts/${postId}/like`)
       .then((res) => {
-        const hasLiked = res.data.hasLiked;
-        handleHeartDisplay($post, hasLiked);
+        handleHeartDisplay($post, res.data.hasLiked);
+        updateLikeText($post, res.data.likeText);
       })
       .catch((err) => {
         console.log(err);
@@ -31,6 +41,7 @@ $(document).on("turbo:load", function () {
         .then((res) => {
           if (res.data.status === "ok") {
             handleHeartDisplay($post, true);
+            updateLikeText($post, res.data.likeText);
           }
         })
         .catch((err) => {
@@ -46,6 +57,7 @@ $(document).on("turbo:load", function () {
         .then((res) => {
           if (res.data.status === "ok") {
             handleHeartDisplay($post, false);
+            updateLikeText($post, res.data.likeText);
           }
         })
         .catch((err) => {

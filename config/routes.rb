@@ -26,8 +26,16 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :new, :create]
   end
 
-  resources :profiles, only: [:show] do
-    patch :avatar_upload, on: :member  # プロフィール画像変更（自分だけ使う）
+  resource :profile, only: [:show] do
+    resource :avatar, only: [:update]
+  end
+
+  resources :accounts, only: [:show] do
+    resources :follows, only: [:create]
+    resources :unfollows, only: [:create]
+    resources :followers, only: [:index]
+    resources :followings, only: [:index]
+    resources :account_posts, only: [:index]
   end
 
 end

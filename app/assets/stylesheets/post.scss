@@ -1,47 +1,5 @@
 @import "variables";
 
-.dropbtn {
-  border: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  font-weight: normal;
-  display: none;
-  right: 0;
-  position: absolute;
-  background-color: white;
-  min-width: 110px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  padding: 8px 16px;
-  text-decoration: none;
-  display: block;
-  color: $text-base-color;
-}
-
-.dropdown-content a:hover {
-  background-color: white;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.loginBtn {
-  color: $btn-enabled-color;
-}
-
 .posts {
   margin-top: 39px;
 }
@@ -49,6 +7,7 @@
 .post {
   margin: 0 auto;
   max-width: 600px;
+  scroll-margin-top: 78px;
 
   & + .post {
     margin-top: 36px;
@@ -67,11 +26,8 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
+    object-fit: cover;
   }
-}
-
-.post_info {
-
 }
 
 .post_author_upper {
@@ -151,10 +107,11 @@
 }
 
 .author-icon {
-  width: 40px;
-
   img {
-    width: 100%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 }
 
@@ -193,6 +150,5 @@
   width: 100px;
   height: 100px;
   object-fit: cover;
-  // border: 1px solid #ccc;
   border: none;
 }

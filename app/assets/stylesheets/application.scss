@@ -7,7 +7,7 @@
 @import "post";
 @import "images";
 @import "comment";
-// @import 'devise';
+@import "follow";
 
 html {
   word-spacing: 1px;
@@ -39,7 +39,21 @@ a {
   color: $text-base-color;
 }
 
+button {
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 .container {
+  padding: 78px 16px 20px;
+  width: 100%;
+}
+
+.devise-container {
   padding: 0 16px 20px;
   width: 100%;
 }

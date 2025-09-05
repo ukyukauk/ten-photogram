@@ -45,6 +45,8 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_decorator (1.4.1)
+      activesupport
     active_model_serializers (0.10.15)
       actionpack (>= 4.1)
       activemodel (>= 4.1)
@@ -134,6 +136,8 @@ GEM
       html2haml
     erubi (1.13.1)
     erubis (2.7.0)
+    faker (3.5.2)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
     ffi (1.17.2-arm-linux-gnu)
@@ -411,6 +415,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  active_decorator
   active_model_serializers
   annotate
   better_errors
@@ -421,6 +426,7 @@ DEPENDENCIES
   debug
   devise
   erb2haml
+  faker
   hamlit
   importmap-rails
   jbuilder

@@ -6,30 +6,15 @@
     .header_center
       = @user.account
     .header_right
-      = link_to 'Follow', '#'
+      = render 'commons/dropdown'
 
   .profilePage_user
-    .profilePage_user_img
-      = form_with model: @user, url: avatar_upload_profile_path, local: true, html: { multipart: true, id: "avatar-form" } do |f|
+    .profilePage_user_img.current_user
+      = form_with(model: @user, url: profile_avatar_path, local: true, html: { multipart: true, id: "avatar-form" }) do |f|
         = f.file_field :avatar, accept: 'image/*', style: "display: none", id: "avatar-input"
         - if @user.avatar.attached?
           = image_tag @user.avatar, id: "avatar-image", class: "profile-avatar"
         - else
           = image_tag "default-avatar.png", id: "avatar-image", class: "profile-avatar"
 
-    .profilePage_user_data
-      .profilePage_user_content
-        .profilePage_user_data_count
-          44
-        .profilePage_user_data_label
-          Posts
-      .profilePage_user_content
-        .profilePage_user_data_count
-          110
-        .profilePage_user_data_label
-          Followers
-      .profilePage_user_content
-        .profilePage_user_data_count
-          44
-        .profilePage_user_data_label
-          Following
+    = render 'commons/profile'
