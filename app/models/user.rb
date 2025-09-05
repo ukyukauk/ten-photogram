@@ -42,14 +42,6 @@ class User < ApplicationRecord
     likes.exists?(post_id: post.id)
   end
 
-  def avatar_image
-    if avatar&.attached?
-      avatar
-    else
-      'default-avatar.png'
-    end
-  end
-
   def follow!(user)
     user_id = get_user_id(user)
     following_relationships.create!(following_id: user_id)
