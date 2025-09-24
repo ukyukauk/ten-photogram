@@ -1,5 +1,4 @@
-class PostsController < ApplicationController
-  before_action :authenticate_user!
+class Apps::PostsController < Apps::ApplicationController
 
   def index
     # フォローしているユーザの投稿

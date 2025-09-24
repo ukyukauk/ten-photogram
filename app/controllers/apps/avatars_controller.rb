@@ -1,5 +1,4 @@
-class AvatarsController < ApplicationController
-  before_action :authenticate_user!
+class Apps::AvatarsController < Apps::ApplicationController
 
   def update
     if current_user.update(avatar_params)

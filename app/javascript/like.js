@@ -24,7 +24,7 @@ $(document).on("turbo:load", function () {
 
     // ハートの色でいいねの表示
     axios
-      .get(`/posts/${postId}/like`)
+      .get(`/api/posts/${postId}/like`)
       .then((res) => {
         handleHeartDisplay($post, res.data.hasLiked);
         updateLikeText($post, res.data.likeText);
@@ -37,7 +37,7 @@ $(document).on("turbo:load", function () {
     // いいね
     $post.off("click", ".inactive-heart").on("click", ".inactive-heart", function () {
       axios
-        .post(`/posts/${postId}/like`)
+        .post(`/api/posts/${postId}/like`)
         .then((res) => {
           if (res.data.status === "ok") {
             handleHeartDisplay($post, true);
@@ -53,7 +53,7 @@ $(document).on("turbo:load", function () {
     // いいねを解除
     $post.off("click", ".active-heart").on("click", ".active-heart", function () {
       axios
-        .delete(`/posts/${postId}/like`)
+        .delete(`/api/posts/${postId}/like`)
         .then((res) => {
           if (res.data.status === "ok") {
             handleHeartDisplay($post, false);
