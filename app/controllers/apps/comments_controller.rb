@@ -1,5 +1,4 @@
-class CommentsController < ApplicationController
-  before_action :authenticate_user!
+class Apps::CommentsController < Apps::ApplicationController
 
   def index
     @post = Post.find(params[:post_id])

@@ -19,23 +19,33 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: 'posts#index'
+  root to: 'apps/posts#index'
 
-  resources :posts do
-    resource :like, only: [:show, :create, :destroy]
-    resources :comments, only: [:index, :new, :create]
+  scope module: :apps do
+    resources :posts do
+      resources :comments, only: [:index, :new, :create]
+    end
+
+    resource :profile, only: [:show] do
+      resource :avatar, only: [:update]
+    end
+
+    resources :accounts, only: [:show] do
+      resources :followers, only: [:index]
+      resources :followings, only: [:index]
+      resources :account_posts, only: [:index]
+    end
   end
 
-  resource :profile, only: [:show] do
-    resource :avatar, only: [:update]
-  end
+  namespace :api, defaults: { format: :json } do
+    scope '/posts/:post_id' do
+      resource :like, only: [:show, :create, :destroy]
+    end
 
-  resources :accounts, only: [:show] do
-    resources :follows, only: [:create]
-    resources :unfollows, only: [:create]
-    resources :followers, only: [:index]
-    resources :followings, only: [:index]
-    resources :account_posts, only: [:index]
+    scope '/accounts/:account_id' do
+      resources :follows, only: [:create]
+      resources :unfollows, only: [:create]
+    end
   end
 
 end

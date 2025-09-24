@@ -1,5 +1,4 @@
-class FollowingsController < ApplicationController
-  before_action :authenticate_user!
+class Apps::FollowingsController < Apps::ApplicationController
 
   def index
     account = User.find(params[:account_id])

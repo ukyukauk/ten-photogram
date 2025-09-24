@@ -1,5 +1,4 @@
-class AccountsController < ApplicationController
-  before_action :authenticate_user!
+class Apps::AccountsController < Apps::ApplicationController
 
   def show
     @user = User.find(params[:id])

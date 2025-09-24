@@ -16,8 +16,8 @@ $(document)
       $btn.prop("disabled", true);
 
       const url = followed
-          ? `/accounts/${userId}/unfollows`
-          : `/accounts/${userId}/follows`;
+          ? `/api/accounts/${userId}/unfollows`
+          : `/api/accounts/${userId}/follows`;
 
       axios
         .post(url)
