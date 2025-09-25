@@ -15,5 +15,13 @@ RSpec.describe 'Profiles', type: :request do
         expect(response).to have_http_status(200)
       end
     end
+
+    context 'ログインしていない場合' do
+      it 'ログイン画面に遷移する' do
+        get profile_path
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
   end
 end

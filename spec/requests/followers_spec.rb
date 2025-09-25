@@ -16,5 +16,13 @@ RSpec.describe 'Followers', type: :request do
         expect(response).to have_http_status(200)
       end
     end
+
+    context 'ログインしていない場合' do
+      it 'ログイン画面に遷移する' do
+        get account_followers_path(account)
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
   end
 end
