@@ -20,7 +20,7 @@ RSpec.describe 'Posts', type: :request do
     context 'ログインしていない場合' do
       it 'ログイン画面に遷移する' do
         get posts_path
-        
+
         expect(response).to redirect_to(new_user_session_path)
       end
     end

@@ -1,0 +1,20 @@
+require 'rails_helper'
+
+RSpec.describe 'Followers', type: :request do
+  let(:user) { create(:user) }
+  let(:account) { create(:user) }
+
+  describe 'GET /followers' do
+    context 'ログインしている場合' do
+      before do
+        sign_in user
+      end
+
+      it '200ステータスが返ってくる' do
+        get account_followers_path(account)
+
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+end
