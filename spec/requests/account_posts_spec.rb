@@ -5,7 +5,7 @@ RSpec.describe 'AccountPosts', type: :request do
   let(:account) { create(:user) }
   let!(:posts) { create_list(:post, 3, :with_image, user: account) }
 
-  describe 'GET /account_posts' do
+  describe 'GET /accounts/:account_id/account_posts' do
     context 'ログインしている場合' do
       before do
         sign_in user

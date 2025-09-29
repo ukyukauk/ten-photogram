@@ -4,7 +4,7 @@ RSpec.describe 'Accounts', type: :request do
   let(:user) { create(:user) }
   let(:account) { create(:user) }
 
-  describe 'GET /accounts' do
+  describe 'GET /accounts/:id' do
     context 'ログインしている場合' do
       before do
         sign_in user

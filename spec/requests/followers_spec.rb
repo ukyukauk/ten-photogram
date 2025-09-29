@@ -4,7 +4,7 @@ RSpec.describe 'Followers', type: :request do
   let(:user) { create(:user) }
   let(:account) { create(:user) }
 
-  describe 'GET /followers' do
+  describe 'GET /accounts/:account_id/followers' do
     context 'ログインしている場合' do
       before do
         sign_in user
