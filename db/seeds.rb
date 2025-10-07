@@ -11,7 +11,7 @@
 john = User.find_by(account: 'John')
 emily = User.find_by(account: 'emily')
 
-image_paths = Dir[Rails.root.join("db/seed_images/*.{jpg,jpeg,png,webp}")]
+image_paths = Dir[Rails.root.join('db/seed_images/*.{jpg,jpeg,png,webp}')]
 
 5.times do
 

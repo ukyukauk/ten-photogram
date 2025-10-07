@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Avatars', type: :request do
   let(:user) { create(:user) }
 
-  describe "PATCH /profile/avatar" do
+  describe 'PATCH /profile/avatar' do
     context 'ログインしている場合' do
       before do
         sign_in user

@@ -36,7 +36,7 @@ RSpec.describe 'Comments', type: :request do
       end
 
       it '200ステータスが返ってくる' do
-        get post_comments_path(post_record, format: :json), headers: { "ACCEPT" => "application/json" } # JSONをリクエスト
+        get post_comments_path(post_record, format: :json), headers: { 'ACCEPT' => 'application/json' } # JSONをリクエスト
 
         expect(response).to have_http_status(200)
 
@@ -50,11 +50,11 @@ RSpec.describe 'Comments', type: :request do
 
     context 'ログインしていない場合' do
       it '401ステータスが返ってくる' do
-        get post_comments_path(post_record, format: :json), headers: { "ACCEPT" => "application/json" } # JSONをリクエスト
+        get post_comments_path(post_record, format: :json), headers: { 'ACCEPT' => 'application/json' } # JSONをリクエスト
 
         expect(response).to have_http_status(401)
         body = JSON.parse(response.body)
-        expect(body["error"]).to be_present
+        expect(body['error']).to be_present
       end
     end
   end
@@ -70,7 +70,7 @@ RSpec.describe 'Comments', type: :request do
         comment_params = attributes_for(:comment)
         post post_comments_path(post_record, format: :json),
           params: { comment: comment_params },
-          headers: { "ACCEPT" => "application/json" } # JSONをリクエスト
+          headers: { 'ACCEPT' => 'application/json' } # JSONをリクエスト
 
         expect(response).to have_http_status(200)
         body = JSON.parse(response.body)
@@ -80,11 +80,11 @@ RSpec.describe 'Comments', type: :request do
 
     context 'ログインしていない場合' do
       it '401ステータスが返ってくる' do
-        get post_comments_path(post_record, format: :json), headers: { "ACCEPT" => "application/json" } # JSONをリクエスト
+        get post_comments_path(post_record, format: :json), headers: { 'ACCEPT' => 'application/json' } # JSONをリクエスト
 
         expect(response).to have_http_status(401)
         body = JSON.parse(response.body)
-        expect(body["error"]).to be_present
+        expect(body['error']).to be_present
       end
     end
   end

@@ -37,11 +37,11 @@ gem 'annotate'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'devise'
+gem 'faker'
 gem 'hamlit'
 gem 'importmap-rails'
 gem 'sassc-rails'
 gem 'sidekiq'
-gem 'faker'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -54,11 +54,11 @@ group :development, :test do
   gem 'brakeman', require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  gem 'factory_bot_rails'
   gem 'pry-byebug'
+  gem 'rspec-rails'
   gem 'rubocop-rails'
   gem 'rubocop-rails-omakase', require: false
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
 end
 
 group :development do
