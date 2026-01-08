@@ -44,6 +44,8 @@ class User < ApplicationRecord
 
   def follow!(user)
     user_id = get_user_id(user)
+
+    return if has_followed?(user)
     following_relationships.create!(following_id: user_id)
   end
 
