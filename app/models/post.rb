@@ -26,7 +26,7 @@ class Post < ApplicationRecord
     first_liker = likes.includes(:user).order(:created_at).first&.user&.account
 
     if likes.count == 0
-      ""
+      ''
     elsif likes.count == 1
       "#{first_liker} liked this post"
     else
