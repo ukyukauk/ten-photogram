@@ -42,9 +42,10 @@ RSpec.describe 'Api::Follows', type: :request do
 
         it 'followed: true が返る' do
           post api_follows_path(account), as: :json
+          expect(response).to have_http_status(200)
 
           body = JSON.parse(response.body)
-          expect(body['followed']).to be (true)
+          expect(body['followed']).to be(true)
         end
       end
     end
