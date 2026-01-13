@@ -3,7 +3,7 @@ FactoryBot.define do
     content { Faker::Lorem.characters(number: 20) }
 
     trait :with_image do
-      after(:build) do |post|
+      after :build do |post|
         post.images.attach(
           io: File.open(Rails.root.join('spec/fixtures/files/test_image.png')),
           filename: 'test_image.png',

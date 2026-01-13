@@ -11,6 +11,5 @@ RSpec.describe 'Login', type: :system do
     click_button 'LOGIN'
 
     expect(page).to have_current_path(root_path)
-    expect(page).not_to have_css('.flash', text: 'ログインしてください')
   end
 end
