@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Api::Unfollows", type: :request do
+RSpec.describe 'Api::Unfollows', type: :request do
   let(:user) { create(:user) }
   let(:account) { create(:user) }
 
-  describe "POST /api/accounts/:account_id/unfollows" do
+  describe 'POST /api/accounts/:account_id/unfollows' do
     context 'ログインしている場合' do
       before do
         sign_in user

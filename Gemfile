@@ -34,6 +34,7 @@ gem 'bootsnap', require: false
 gem 'active_decorator'
 gem 'active_model_serializers'
 gem 'annotate'
+gem 'aws-sdk-s3', require: false
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'devise'
@@ -54,6 +55,7 @@ group :development, :test do
   gem 'brakeman', require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem 'rspec-rails'

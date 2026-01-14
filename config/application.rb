@@ -27,5 +27,9 @@ module Photogram
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
     config.active_job.queue_adapter = :sidekiq
+
+    if ['development', 'test'].include? ENV['RAILS_ENV']
+      Dotenv::Railtie.load
+    end
   end
 end
